@@ -1,4 +1,4 @@
-# Akademija-Base-2019-03-11
+# Akademija-Base-2019-03
 
 Pasileisti tuščią dockerio konteinerį naudokite komandą:
 
