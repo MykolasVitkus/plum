@@ -21,3 +21,5 @@ To enable file watching:
 To simply build the javascript, run the:
 
 `yarn build`
+
+note: react code is in the `assets/js/app.jsx` file.
