@@ -33,10 +33,11 @@ services:
   phpmyadmin:
     links:
      - mysql
-    image: phpmyadmin/phpmyadmin        
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "7070:80"
     environment:
      - MYSQL_ROOT_PASSWORD=root
      - PMA_HOST=mysql
-     - VIRTUAL_HOST=phpmyadmin.local
     networks:
       - default
