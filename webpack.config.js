@@ -54,5 +54,9 @@ Encore
     .enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
 ;
+const config = Encore.getWebpackConfig();
+config.watchOptions = {
+    poll: 300,
+};
 
-module.exports = Encore.getWebpackConfig();
+module.exports = config;
