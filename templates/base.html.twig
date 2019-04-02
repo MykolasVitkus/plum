@@ -2,17 +2,20 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         {% endblock %}
     </head>
     <body>
-        <h1>Hello I am test controller view</h1>
-        {% block body %}{% endblock %}
-        <div id="root"></div>
-        {% block javascripts %}
-            <script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
+        {% block body %}
+            <div id="root"></div>
         {% endblock %}
+
+
     </body>
+
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
+    {% endblock %}
 </html>

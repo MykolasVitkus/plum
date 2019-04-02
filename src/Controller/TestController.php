@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: marius
- * Date: 19.3.23
- * Time: 10.20
- */
 
 namespace App\Controller;
 
@@ -15,9 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TestController extends AbstractController
 {
-
     /**
-     * @Route("/", name="index")
+     * @Route("/{reactRouting}", name="index", defaults={"reactRouting": null})
      */
     public function indexAction()
     {
