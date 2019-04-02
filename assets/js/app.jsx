@@ -13,7 +13,7 @@ class App extends Component {
             <BrowserRouter>
                 <ul>
                     <NavLink to="/">Personal Info</NavLink>
-                    <NavLink to="/admin">Edit Info</NavLink>
+                    <NavLink to="/admin">Admin Panel</NavLink>
                 </ul>
                 <Switch>
                     <Route path="/admin" component={Admin}/>
