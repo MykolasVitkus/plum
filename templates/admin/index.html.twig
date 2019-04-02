@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <div class="h3 text-center m-5">
+        Hello, {{ app.user.username }}
+    </div>
+<div id="adminForm" class="jumbotron container text-center"></div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
+{% endblock %}

@@ -1,6 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter, NavLink, Route, Switch} from 'react-router-dom';
+import AdminForm from './components/AdminForm';
+import Home from './components/Home';
 
-const Preview = () => (<div>Hi, I am a simple div rendered in react</div>);
+require('../css/app.css');
 
-ReactDOM.render(<Preview />, document.getElementById('root'));
+class App extends Component
+{
+    render() {
+        return (
+            <BrowserRouter>
+                <ul>
+                    <NavLink to="/">Personal info</NavLink>
+                    <NavLink to="/admin">Admin </NavLink>
+                </ul>
+                <Switch>
+                    <Route path="/admin" component={AdminForm}/>
+                    <Route path="/" component={Home}/>
+                </Switch>
+            </BrowserRouter>
+        );
+    }
+}
+
+ReactDOM.render(<App/>, document.getElementById('root'));

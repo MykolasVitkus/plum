@@ -3,10 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        {% endblock %}
     </head>
     <body>
-        <h1>Hello I am test controller view</h1>
         {% block body %}{% endblock %}
         <div id="root"></div>
         {% block javascripts %}

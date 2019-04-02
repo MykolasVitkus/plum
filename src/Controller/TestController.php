@@ -17,7 +17,7 @@ class TestController extends AbstractController
 {
 
     /**
-     * @Route("/", name="index")
+     * @Route("/{reactRouting}", name="index", defaults={"reactRouting": null})
      */
     public function indexAction()
     {
