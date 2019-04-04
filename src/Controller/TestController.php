@@ -17,7 +17,7 @@ class TestController extends AbstractController
 {
 
     /**
-     * @Route("/", name="index")
+     * @Route("/index", name="index")
      */
     public function indexAction()
     {
