@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Forms\EditUser;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,12 +29,25 @@ class HomeController extends AbstractController
      */
     public function edit(Request $request): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->get('security.token_storage')->getToken()->getUser();
+
         $form = $this->createForm(EditUser::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            $file = $user->getPicture();
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            try {
+                $file->move(
+                    $this->getParameter('uploaded_pictures'),
+                    $fileName
+                );
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+            }
+            $user->setPicture($fileName);
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('home');
         }
@@ -42,6 +56,10 @@ class HomeController extends AbstractController
             'form' => $form->createView(),
         ]);
 
+    }
+    private function generateUniqueFileName()
+    {
+        return md5(uniqid());
     }
 
 
