@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -61,6 +62,29 @@ class User implements UserInterface
      * @ORM\Column(type="text")
      */
     private $Experience;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Please upload a picture as a jp(e)g/png format")
+     */
+    private $Picture;
+
+    /**
+     * @return mixed
+     */
+    public function getPicture()
+    {
+        return $this->Picture;
+    }
+
+    /**
+     * @param mixed $Picture
+     */
+    public function setPicture($Picture): void
+    {
+        $this->Picture = $Picture;
+    }
+
 
     public function getId(): ?int
     {
@@ -190,5 +214,8 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+    public function __toString() {
+        return $this->getName();
     }
 }
