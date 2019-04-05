@@ -64,26 +64,10 @@ class User implements UserInterface
     private $Experience;
 
     /**
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank(message="Please upload a picture as a jp(e)g/png format")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Picture;
 
-    /**
-     * @return mixed
-     */
-    public function getPicture()
-    {
-        return $this->Picture;
-    }
-
-    /**
-     * @param mixed $Picture
-     */
-    public function setPicture($Picture): void
-    {
-        $this->Picture = $Picture;
-    }
 
 
     public function getId(): ?int
@@ -198,6 +182,17 @@ class User implements UserInterface
 
         return $this;
     }
+    public function getPicture(): ?string
+    {
+        return $this->Picture;
+    }
+
+    public function setPicture(?string $Picture): self
+    {
+        $this->Picture = $Picture;
+        return $this;
+    }
+
 
     public function getRoles()
     {

@@ -30,7 +30,8 @@ class EditUser extends AbstractType
             ->add('Experience')
             ->add('AboutMe')
             ->add('Picture', FileType::class, array(
-                    'data_class' => null
+                    'data_class' => null,
+                    'required' => false,
             ))
             ->add('submit', SubmitType::class)
         ;
