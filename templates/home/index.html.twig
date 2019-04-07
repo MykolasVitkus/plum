@@ -1,27 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ user.Name }} {{ user.LastName }}{% endblock %}
+{% block title %} {{ user.name }} {{ user.lastName }}{% endblock %}
 
 {% block body %}
+{% if is_granted('ROLE_USER') %}
 
+{% endif %}
 <div class="container mt-5">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 
     <div>
         <img src="{{ asset('uploads/pictures/' ~ user.Picture) }}" height="100px"><br>
         <span>Name</span>
-        <h2 class="">{{ user.Name }} {{ user.LastName }}</h2>
+        <h2 class="">{{ user.name }} {{ user.lastName }}</h2>
         <span>Birth Date</span>
-        <h2>{{ user.BirthDate|date("Y/m/d") }}</h2>
+        <h2>{{ user.birthDate|date("Y/m/d") }}</h2>
         <span>Email</span>
-        <h2>{{ user.Email }}</h2>
+        <h2>{{ user.email }}</h2>
         <span>Phone Number</span>
-        <h2>{{ user.PhoneNumber }}</h2>
+        <h2>{{ user.phoneNumber }}</h2>
         <span>Experience</span>
-        <h2>{{ user.Experience }}</h2>
+        <h2>{{ user.experience }}</h2>
         <span>About me</span>
         <h2 class="border-primary">{{ user.AboutMe }}</h2>
-        <a href="{{ path('edit_profile') }}"><button class="btn btn-warning">Edit profile</button></a>
-
+        <a href="{{ path('edit_profile') }}"><button class="btn btn-success">Edit profile</button></a>
     </div>
 </div>
 {% endblock %}

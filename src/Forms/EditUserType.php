@@ -22,14 +22,14 @@ class EditUserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Name')
-            ->add('LastName')
-            ->add('BirthDate', BirthdayType::class)
-            ->add('Email')
-            ->add('PhoneNumber')
-            ->add('Experience')
-            ->add('AboutMe')
-            ->add('Picture', FileType::class, array(
+            ->add('name')
+            ->add('lastName')
+            ->add('birthDate', BirthdayType::class)
+            ->add('email')
+            ->add('phoneNumber')
+            ->add('experience')
+            ->add('aboutMe')
+            ->add('picture', FileType::class, array(
                     'data_class' => null,
                     'required' => false,
             ))

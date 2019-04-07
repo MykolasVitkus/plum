@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -21,52 +20,52 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Username;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Password;
+    private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Email;
+    private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Name;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $LastName;
+    private $lastName;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $BirthDate;
+    private $birthDate;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $PhoneNumber;
+    private $phoneNumber;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $AboutMe;
+    private $aboutMe;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $Experience;
+    private $experience;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Picture;
+    private $picture;
 
 
 
@@ -77,119 +76,119 @@ class User implements UserInterface
 
     public function getUsername(): ?string
     {
-        return $this->Username;
+        return $this->username;
     }
 
-    public function setUsername(string $Username): self
+    public function setUsername(string $username): self
     {
-        $this->Username = $Username;
+        $this->username = $username;
 
         return $this;
     }
 
     public function getPassword(): ?string
     {
-        return $this->Password;
+        return $this->password;
     }
 
-    public function setPassword(string $Password): self
+    public function setPassword(string $password): self
     {
-        $this->Password = $Password;
+        $this->password = $password;
 
         return $this;
     }
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): self
+    public function setEmail(string $email): self
     {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): self
+    public function setName(string $name): self
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getLastName(): ?string
     {
-        return $this->LastName;
+        return $this->lastName;
     }
 
-    public function setLastName(string $LastName): self
+    public function setLastName(string $lastName): self
     {
-        $this->LastName = $LastName;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
     public function getBirthDate(): ?\DateTimeInterface
     {
-        return $this->BirthDate;
+        return $this->birthDate;
     }
 
-    public function setBirthDate(\DateTimeInterface $BirthDate): self
+    public function setBirthDate(\DateTimeInterface $birthDate): self
     {
-        $this->BirthDate = $BirthDate;
+        $this->birthDate = $birthDate;
 
         return $this;
     }
 
     public function getPhoneNumber(): ?string
     {
-        return $this->PhoneNumber;
+        return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(string $PhoneNumber): self
+    public function setPhoneNumber(string $phoneNumber): self
     {
-        $this->PhoneNumber = $PhoneNumber;
+        $this->phoneNumber = $phoneNumber;
 
         return $this;
     }
 
     public function getAboutMe(): ?string
     {
-        return $this->AboutMe;
+        return $this->aboutMe;
     }
 
-    public function setAboutMe(string $AboutMe): self
+    public function setAboutMe(string $aboutMe): self
     {
-        $this->AboutMe = $AboutMe;
+        $this->aboutMe = $aboutMe;
 
         return $this;
     }
 
     public function getExperience(): ?string
     {
-        return $this->Experience;
+        return $this->experience;
     }
 
-    public function setExperience(string $Experience): self
+    public function setExperience(string $experience): self
     {
-        $this->Experience = $Experience;
+        $this->experience = $experience;
 
         return $this;
     }
     public function getPicture(): ?string
     {
-        return $this->Picture;
+        return $this->picture;
     }
 
-    public function setPicture(?string $Picture): self
+    public function setPicture(?string $picture): self
     {
-        $this->Picture = $Picture;
+        $this->picture = $picture;
         return $this;
     }
 
