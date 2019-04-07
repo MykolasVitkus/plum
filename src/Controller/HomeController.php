@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Forms\EditUser;
+use App\Forms\EditUserType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -12,14 +12,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
+
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function show()
     {
-        $user = $this->getDoctrine()->getRepository(User::class)->findAll()[0];
+        $user = $this->getUser();
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'user' => $user,
@@ -30,13 +31,11 @@ class HomeController extends AbstractController
      */
     public function edit(Request $request): Response
     {
+
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
-        //$user = $this->get('security.token_storage')->getToken()->getUser();
-
         $user = $this->getUser();
         $currentPicture = $user->getPicture();
-        $form = $this->createForm(EditUser::class, $user);
+        $form = $this->createForm(EditUserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
