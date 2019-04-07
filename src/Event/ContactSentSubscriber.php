@@ -2,10 +2,17 @@
 
 namespace App\Event;
 
+use App\Service\EmailService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ContactSentSubscriber implements EventSubscriberInterface
 {
+    private $service;
+    public function __construct(EmailService $service)
+    {
+        $this->service = $service;
+    }
+
     public static function getSubscribedEvents()
     {
         return [
@@ -15,21 +22,6 @@ class ContactSentSubscriber implements EventSubscriberInterface
 
     public function onMessageSent(ContactSentEvent $event)
     {
-
-        $mailer = new \Swift_Mailer('');
-        $message = (new \Swift_Message('Dear ' . $event->getUser()->getName() . ', you have received a message'))
-            ->setFrom($event->getEmail())
-            ->setTo($event->getUser()->getEmail())
-            ->setBody(
-                $this->renderView(
-                    'contact/contact_email.html.twig',
-                    ['message' => $event->getMessage(),
-                        'email' => $event->getEmail()]
-                ),
-                'text/html'
-            )
-        ;
-
-        $mailer->send($message);
+        $this->service->sendEmail($event);
     }
 }

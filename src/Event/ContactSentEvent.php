@@ -14,7 +14,6 @@ class ContactSentEvent extends Event
     {
         $this->message = $message;
     }
-
     public function getMessage()
     {
         return $this->message->getMessage();

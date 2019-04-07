@@ -32,6 +32,7 @@ class ContactController extends AbstractController
         {
             $contactMessage = $form->getData();
             $contactMessage->setUser($user);
+            $em->getConnection()->beginTransaction();
 
             $em->persist($contactMessage);
             $em->flush();
@@ -39,7 +40,7 @@ class ContactController extends AbstractController
             $event = new ContactSentEvent($contactMessage);
             $dispatcher->dispatch(ContactSentEvent::NAME, $event);
 
-            return $this->redirect($this->generateUrl('home'));
+            $em->commit();
         }
 
         return $this->render('contact/index.html.twig', [
