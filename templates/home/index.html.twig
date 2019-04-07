@@ -26,7 +26,8 @@
         <span>Experience</span>
         <h2>{{ user.experience }}</h2>
         <span>About me</span>
-        <h2 class="border-primary">{{ user.AboutMe }}</h2>
+        <h2 class="border-primary">{{ user.aboutMe }}</h2>
+        <a href="{{ path('contact', { 'id' : user.id }) }}"><button class="btn btn-success">Contact me</button></a>
         <a href="{{ path('edit_profile') }}"><button class="btn btn-success">Edit profile</button></a>
     </div>
 </div>
