@@ -24,7 +24,7 @@ class EmailService
             ->setBody(
                 $this->templating->render(
                     'contact/contact_email.html.twig',
-                    ['message' => $event->getMessage(), 'email' => $event->getEmail()]
+                    ['message' => $event->getMessage(), 'email' => $event->getEmail(), 'user' => $event->getUser()]
                 ),
                 'text/html'
             );

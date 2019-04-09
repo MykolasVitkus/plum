@@ -25,7 +25,6 @@ class ContactController extends AbstractController
         $user = $em->getRepository(User::class)->findOneBy(['id' => $id]);
         $form = $this->createForm(ContactType::class, $contactMessage);
 
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
