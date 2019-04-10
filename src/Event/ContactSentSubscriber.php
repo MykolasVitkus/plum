@@ -16,11 +16,11 @@ class ContactSentSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            ContactSentEvent::NAME => 'onMessageSent'
+            ContactSentEvent::NAME => 'sendContactMessageAsEmail'
         ];
     }
 
-    public function onMessageSent(ContactSentEvent $event)
+    public function sendContactMessageAsEmail(ContactSentEvent $event)
     {
         $this->emailService->sendEmail($event);
     }
