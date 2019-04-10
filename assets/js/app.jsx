@@ -1,6 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Preview = () => (<div>Hi, I am a simple div rendered in react</div>);
+class App extends React.Component {
+    render() {
+        return (
+            <div>
 
-ReactDOM.render(<Preview />, document.getElementById('root'));
+            </div>
+        );
+    }
+}
+ReactDOM.render(<App/>, document.getElementById('links'));

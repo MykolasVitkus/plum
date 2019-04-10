@@ -7,10 +7,10 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ContactSentSubscriber implements EventSubscriberInterface
 {
-    private $service;
-    public function __construct(EmailService $service)
+    private $emailService;
+    public function __construct(EmailService $emailService)
     {
-        $this->service = $service;
+        $this->emailService = $emailService;
     }
 
     public static function getSubscribedEvents()
@@ -22,6 +22,6 @@ class ContactSentSubscriber implements EventSubscriberInterface
 
     public function onMessageSent(ContactSentEvent $event)
     {
-        $this->service->sendEmail($event);
+        $this->emailService->sendEmail($event);
     }
 }

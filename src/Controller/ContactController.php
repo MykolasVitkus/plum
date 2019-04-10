@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\ContactMessage;
 use App\Entity\User;
 use App\Event\ContactSentEvent;
-use App\Event\ContactSentSubscriber;
 use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -31,15 +30,11 @@ class ContactController extends AbstractController
         {
             $contactMessage = $form->getData();
             $contactMessage->setUser($user);
-            $em->getConnection()->beginTransaction();
-
             $em->persist($contactMessage);
             $em->flush();
 
             $event = new ContactSentEvent($contactMessage);
             $dispatcher->dispatch(ContactSentEvent::NAME, $event);
-
-            $em->commit();
         }
 
         return $this->render('contact/index.html.twig', [

@@ -53,6 +53,10 @@ Encore
     // uncomment if you use API Platform Admin (composer req api-admin)
     .enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
-;
 
-module.exports = Encore.getWebpackConfig();
+;
+const config = Encore.getWebpackConfig();
+config.watchOptions = {
+    poll: 100,
+};
+module.exports = config;
